@@ -1,0 +1,56 @@
++-------------------+
+|    Department     |
+|-------------------|
+| DepartmentID (PK) |
+| DepartmentName    |
+| Location          |
++-------------------+
+          | 1
+          |
+          | M
++-------------------+
+|      Course       |
+|-------------------|
+| CourseID (PK)    |
+| CourseName        |
+| Credits           |
+| DepartmentID (FK) |
++-------------------+
+          | 1
+          |
+          | M
++-------------------+
+|     Instructor     |
+|-------------------|
+| InstructorID (PK) |
+| FirstName         |
+| LastName          |
+| Email             |
+| Phone             |
+| DepartmentID (FK) |
++-------------------+
+          | M
+          |
+          | 1
++-------------------+
+|     Enrollment     |
+|-------------------|
+| EnrollmentID (PK)  |
+| StudentID (FK)     |
+| CourseID (FK)      |
+| InstructorID (FK)  |
+| Grade              |
++-------------------+
+          | M
+          |
+          | 1
++-------------------+
+|      Student       |
+|-------------------|
+| StudentID (PK)    |
+| FirstName         |
+| LastName          |
+| Email             |
+| Phone             |
+| EnrollmentDate    |
++-------------------+
