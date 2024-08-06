@@ -50,14 +50,14 @@ INSERT INTO Course (CourseName, Credits, DepartmentID) VALUES
 ('World History', 3, 3);
 
 INSERT INTO Instructor (FirstName, LastName, Email, Phone, DepartmentID) VALUES 
-('John', 'Doe', 'jdoe@example.com', '123-456-7890', 2),
-('Jane', 'Smith', 'jsmith@example.com', '987-654-3210', 1);
+('krishna', 'kamdar', 'kr80934@gmail.com', '9752114577', 2),
+('yashi', 'lakhera', 'yashi@example.com', '9134452552', 1);
 
 INSERT INTO Student (FirstName, LastName, Email, Phone, EnrollmentDate) VALUES 
-('Alice', 'Johnson', 'ajohnson@example.com', '555-123-4567', '2023-09-01'),
-('Bob', 'Brown', 'bbrown@example.com', '555-987-6543', '2023-09-01');
+('godhhli', 'Johnson', 'ajohnson@example.com', '555-123-4567', '2023-09-01'),
+('madhav', 'Brown', 'bbrown@example.com', '555-987-6543', '2023-09-01');
 
 INSERT INTO Enrollment (StudentID, CourseID, InstructorID, Grade) VALUES 
-(1, 1, 1, 'A'), -- Alice Johnson enrolled in Statistics taught by John Doe
-(1, 2, 1, 'B'), -- Alice Johnson enrolled in Calculus taught by John Doe
-(2, 1, 1, 'A'); -- Bob Brown enrolled in Statistics taught by John Doe
+(1, 1, 1, 'A'), -- godhuli Johnson enrolled in Statistics taught by krishna kamdar 
+(1, 2, 1, 'B'), -- godhuli Johnson enrolled in Calculus taught by krishna kamdar 
+(2, 1, 1, 'A'); -- madhav Brown enrolled in Statistics taught by krishna kamdar 
