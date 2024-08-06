@@ -1,0 +1,63 @@
+CREATE TABLE Department (
+    DepartmentID INT AUTO_INCREMENT PRIMARY KEY,
+    DepartmentName VARCHAR(100) NOT NULL,
+    Location VARCHAR(100)
+);
+CREATE TABLE Course (
+    CourseID INT AUTO_INCREMENT PRIMARY KEY,
+    CourseName VARCHAR(100) NOT NULL,
+    Credits INT NOT NULL,
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+);
+CREATE TABLE Instructor (
+    InstructorID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Phone VARCHAR(15),
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+);
+CREATE TABLE Student (
+    StudentID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Phone VARCHAR(15),
+    EnrollmentDate DATE NOT NULL
+);
+CREATE TABLE Enrollment (
+    EnrollmentID INT AUTO_INCREMENT PRIMARY KEY,
+    StudentID INT,
+    CourseID INT,
+    InstructorID INT,
+    Grade CHAR(2),
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID),
+    FOREIGN KEY (InstructorID) REFERENCES Instructor(InstructorID),
+    UNIQUE(StudentID, CourseID) -- Prevents a student from enrolling in the same course multiple times
+);
+INSERT INTO Department (DepartmentName, Location) VALUES 
+('Department of English', 'Building A'),
+('Department of Mathematics', 'Building B'),
+('Department of History', 'Building C');
+
+INSERT INTO Course (CourseName, Credits, DepartmentID) VALUES 
+('Statistics', 3, 2),
+('Calculus', 4, 2),
+('Creative Writing', 3, 1),
+('World History', 3, 3);
+
+INSERT INTO Instructor (FirstName, LastName, Email, Phone, DepartmentID) VALUES 
+('John', 'Doe', 'jdoe@example.com', '123-456-7890', 2),
+('Jane', 'Smith', 'jsmith@example.com', '987-654-3210', 1);
+
+INSERT INTO Student (FirstName, LastName, Email, Phone, EnrollmentDate) VALUES 
+('Alice', 'Johnson', 'ajohnson@example.com', '555-123-4567', '2023-09-01'),
+('Bob', 'Brown', 'bbrown@example.com', '555-987-6543', '2023-09-01');
+
+INSERT INTO Enrollment (StudentID, CourseID, InstructorID, Grade) VALUES 
+(1, 1, 1, 'A'), -- Alice Johnson enrolled in Statistics taught by John Doe
+(1, 2, 1, 'B'), -- Alice Johnson enrolled in Calculus taught by John Doe
+(2, 1, 1, 'A'); -- Bob Brown enrolled in Statistics taught by John Doe
