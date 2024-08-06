@@ -51,11 +51,11 @@ INSERT INTO Course (CourseID,CourseName, Credits, DepartmentID) VALUES
 
 INSERT INTO Instructor (InstructorID,FirstName, LastName, Email, Phone, DepartmentID) VALUES 
 (1,'krishna', 'kamdar', 'kr80934@gmail.com', '9752114577', 2),
-(2,'yashi', 'lakhera', 'yashi@example.com', '9134452552', 1);
+(2,'yashi', 'lakhera', 'yashi@gmail.com', '9134452552', 1);
 
 INSERT INTO Student (StudentID,FirstName, LastName, Email, Phone, EnrollmentDate) VALUES 
-(1,'godhhli', 'Johnson', 'ajohnson@example.com', '555-123-4567', '2023-09-01'),
-(2,'madhav', 'Brown', 'bbrown@example.com', '555-987-6543', '2023-09-01');
+(1,'godhhli', 'gopal', 'gopal@example.com', '9446355262', '2023-09-01'),
+(2,'madhav', 'vivek', 'vivek@example.com', '7363736353', '2023-09-01');
 
 INSERT INTO Enrollment (StudentID, CourseID, InstructorID, Grade) VALUES 
 (1, 1, 1, 'A'), -- godhuli Johnson enrolled in Statistics taught by krishna kamdar 
