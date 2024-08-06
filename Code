@@ -1,17 +1,17 @@
 CREATE TABLE Department (
-    DepartmentID INT AUTO_INCREMENT PRIMARY KEY,
+    DepartmentID INT PRIMARY KEY,
     DepartmentName VARCHAR(100) NOT NULL,
     Location VARCHAR(100)
 );
 CREATE TABLE Course (
-    CourseID INT AUTO_INCREMENT PRIMARY KEY,
+    CourseID INT PRIMARY KEY,
     CourseName VARCHAR(100) NOT NULL,
     Credits INT NOT NULL,
     DepartmentID INT,
     FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 );
 CREATE TABLE Instructor (
-    InstructorID INT AUTO_INCREMENT PRIMARY KEY,
+    InstructorID INT PRIMARY KEY,
     FirstName VARCHAR(50) NOT NULL,
     LastName VARCHAR(50) NOT NULL,
     Email VARCHAR(100) UNIQUE NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE Instructor (
     FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 );
 CREATE TABLE Student (
-    StudentID INT AUTO_INCREMENT PRIMARY KEY,
+    StudentID INT PRIMARY KEY,
     FirstName VARCHAR(50) NOT NULL,
     LastName VARCHAR(50) NOT NULL,
     Email VARCHAR(100) UNIQUE NOT NULL,
@@ -38,26 +38,31 @@ CREATE TABLE Enrollment (
     FOREIGN KEY (InstructorID) REFERENCES Instructor(InstructorID),
     UNIQUE(StudentID, CourseID) -- Prevents a student from enrolling in the same course multiple times
 );
-INSERT INTO Department (DepartmentName, Location) VALUES 
-('Department of English', 'Building A'),
-('Department of Mathematics', 'Building B'),
-('Department of History', 'Building C');
+INSERT INTO Department (DepartmentID,DepartmentName, Location) VALUES 
+(1,'Department of English', 'Building A'),
+(2,'Department of Mathematics', 'Building B'),
+(3,'Department of History', 'Building C');
 
-INSERT INTO Course (CourseName, Credits, DepartmentID) VALUES 
-('Statistics', 3, 2),
-('Calculus', 4, 2),
-('Creative Writing', 3, 1),
-('World History', 3, 3);
+INSERT INTO Course (CourseID,CourseName, Credits, DepartmentID) VALUES 
+(1,'Statistics', 3, 2),
+(2,'Calculus', 4, 2),
+(3,'Creative Writing', 3, 1),
+(4,'World History', 3, 3);
 
-INSERT INTO Instructor (FirstName, LastName, Email, Phone, DepartmentID) VALUES 
-('krishna', 'kamdar', 'kr80934@gmail.com', '9752114577', 2),
-('yashi', 'lakhera', 'yashi@example.com', '9134452552', 1);
+INSERT INTO Instructor (InstructorID,FirstName, LastName, Email, Phone, DepartmentID) VALUES 
+(1,'krishna', 'kamdar', 'kr80934@gmail.com', '9752114577', 2),
+(2,'yashi', 'lakhera', 'yashi@example.com', '9134452552', 1);
 
-INSERT INTO Student (FirstName, LastName, Email, Phone, EnrollmentDate) VALUES 
-('godhhli', 'Johnson', 'ajohnson@example.com', '555-123-4567', '2023-09-01'),
-('madhav', 'Brown', 'bbrown@example.com', '555-987-6543', '2023-09-01');
+INSERT INTO Student (StudentID,FirstName, LastName, Email, Phone, EnrollmentDate) VALUES 
+(1,'godhhli', 'Johnson', 'ajohnson@example.com', '555-123-4567', '2023-09-01'),
+(2,'madhav', 'Brown', 'bbrown@example.com', '555-987-6543', '2023-09-01');
 
 INSERT INTO Enrollment (StudentID, CourseID, InstructorID, Grade) VALUES 
 (1, 1, 1, 'A'), -- godhuli Johnson enrolled in Statistics taught by krishna kamdar 
 (1, 2, 1, 'B'), -- godhuli Johnson enrolled in Calculus taught by krishna kamdar 
 (2, 1, 1, 'A'); -- madhav Brown enrolled in Statistics taught by krishna kamdar 
+select *from Department;
+select *from Course;
+select *from Instructor;
+select *from Student;
+select *from Enrollment;
